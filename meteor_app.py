@@ -67,7 +67,7 @@ class MeteorDashApp:
 
     def run_app(self):
         try:
-            self.app.run_server(debug=True)
+            self.app.run_server(debug=False)
         except Exception as e:
             logger.exception(f"Error running the dashboard app: {e}")
             raise
@@ -408,6 +408,7 @@ class MeteorDashApp:
 
 
 meteor_dash_app = MeteorDashApp()
+server = meteor_dash_app.app.server
 
 @meteor_dash_app.app.callback(Output("scatter-geo", "figure"), [Input("year-slider", "value")])
 def update_map(selected_year):
